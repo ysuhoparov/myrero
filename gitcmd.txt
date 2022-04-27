@@ -1,0 +1,40 @@
+C:\Users\syuri>cd c:\app\tst
+
+c:\app\tst>dir
+ Том в устройстве C не имеет метки.
+ Серийный номер тома: ECF6-0D7F
+
+ Содержимое папки c:\app\tst
+
+27.04.2022  14:32    <DIR>          .
+27.04.2022  14:32    <DIR>          ..
+21.04.2022  15:58            11 690 f1.txt
+11.12.2021  15:23            32 278 pietra.PNG
+               2 файлов         43 968 байт
+               2 папок  100 050 849 792 байт свободно
+
+c:\app\tst>git init
+Initialized empty Git repository in C:/app/tst/.git/
+
+c:\app\tst>git add --all
+
+c:\app\tst>git commit -m test
+[master (root-commit) c5f465d] test
+ 2 files changed, 129 insertions(+)
+ create mode 100644 f1.txt
+ create mode 100644 pietra.PNG
+
+c:\app\tst>git remote add stst https://github.com/ysuhoparov/tst.git
+
+c:\app\tst>git push -u stst
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 30.25 KiB | 7.56 MiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/ysuhoparov/tst.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'stst'.
+
+c:\app\tst>
