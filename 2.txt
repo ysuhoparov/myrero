@@ -1,0 +1,69 @@
+
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <ctime>
+#include <random>
+#include <cmath>
+
+
+#define x 50
+#define y 20
+
+int main() {
+
+	using namespace std;
+
+	ofstream fimg;
+	fimg.open("image.txt");
+	if (!fimg) {
+		cout << ("Cannot create file");
+		return 1;
+	}
+
+	srand(time(nullptr));
+	const char* sc = "01";
+	char image;
+
+	// init,  draw & save
+
+	for (int i = 0; i < y; i++) {
+		for (int j = 0; j < x; j++) {
+			image = rand() % 2;
+			cout << sc[image];
+			fimg << sc[image];
+		}
+		cout << "\n";
+		fimg << "\n";
+	}
+	fimg.close();
+
+	ifstream img;
+	img.open("image.txt");
+	if (!img) {
+		cout << ("File image.txt not found");
+		return 2;
+	}
+	string st;
+	cout << "\n\n";
+	for (int i = 0; i < y; i++) {    // read & draw 
+		img >> st;
+		cout << st << "\n";
+	}
+	img.close();
+
+
+	cout << "\n\nNormal distribution  Sigma: 0.1 - 2\n\n";
+	random_device rd{};
+	mt19937 gen{ rd() };
+	for (int i = 0; i < y; i++) {
+		normal_distribution<> d{ 10, 0.1 * (i + 1) };
+		for (int j = 0; j < x; j++) {
+			image = abs(round(d(gen)));
+			cout << sc[image % 2];
+		}
+		cout << "\n";
+	}
+
+	return 0;
+}

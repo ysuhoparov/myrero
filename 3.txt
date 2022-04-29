@@ -1,0 +1,41 @@
+#include <string>
+#include <fstream>
+#include <iostream>
+
+int main() {
+    using namespace std;
+
+    string fish;
+    string riverfish;
+
+    cout << "Fish : ";  cin >> fish;
+
+    ifstream river;
+    river.open("river.txt");
+    if (!river) {
+        cout << "No file 'river.txt'";
+        return 1;
+    }
+
+    ofstream backet;
+    backet.open("backet.txt", ios::app);
+    if (!backet) {
+        cout << "Cannot open or create 'backet.txt'";
+        return 2;
+    }
+
+    int nfish = 0;
+    while (!river.eof()) {
+        river >> riverfish;
+
+        if (riverfish == fish) {
+            backet << fish << endl;
+            nfish++;
+        }
+
+    }
+    backet.close();
+    river.close();
+
+    cout << "Number fish = " << nfish;
+}
